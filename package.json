@@ -4,12 +4,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "starts": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "author": "Appu Kumar Yadav",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "mongoose": "^9.2.1"
