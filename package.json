@@ -4,16 +4,22 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "starts": "node src/index.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "author": "Appu Kumar Yadav",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
     "dotenv": "^17.3.1",
     "ejs": "^4.0.1",
+    "ejs-mate": "^4.0.0",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "method-override": "^3.0.0",
     "mongoose": "^9.2.1"
   },
   "devDependencies": {
