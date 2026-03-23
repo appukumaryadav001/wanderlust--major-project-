@@ -1,6 +1,7 @@
 import {ApiError} from "../utils/ApiError.js";
 import {wrapAsync} from "../utils/wrapAsync.js";
 import {User} from "../models/user.model.js";
+import {uploadOncloudinary} from "../utils/cloudinary.js";
 const getSignup = (req,res)=>{
    return  res.render("signup.ejs");
 };

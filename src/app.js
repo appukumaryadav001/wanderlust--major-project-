@@ -9,7 +9,7 @@ import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
 import { errorMiddleware } from "./middlewares/error.middleware.js";
 import {ApiError} from "./utils/ApiError.js";
-
+import userRouter from "./routes/user.route.js";
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,6 +48,8 @@ app.use(methodOverride('_method'));
 app.get("/",(req,res)=>{
     res.send("HI")
 });
+
+app.use("/user",userRouter);
 
 
 
