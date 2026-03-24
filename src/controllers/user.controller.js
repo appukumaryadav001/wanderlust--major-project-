@@ -38,7 +38,7 @@ const signup = wrapAsync (async (req,res)=>{
         username,
         email,
         password,
-        avatar:avatarUrl || "",
+        avatar:avatarUrl || "/images/default-avatar.png",
     });
      if(!user){
     throw new ApiError(500, "User creation failed!");
