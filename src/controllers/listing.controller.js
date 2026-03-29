@@ -189,8 +189,8 @@ const deleteListing = wrapAsync (async (req,res)=>{
 export {
     getAllListings,
     renderNewListingForm,
-       createListing,
-       showListing,
+    createListing,
+     showListing,
 renderUpdateListingForm,
 updateListing,
 deleteListing
