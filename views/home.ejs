@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include("./partials/head")%>
+    <title>Home page</title>
+</head>
+<body>
+<%-include("./partials/nav")%>
+<div class="container mt-3">
+  <div class="row">
+   
+<% for(let listing of allListings) { %>
+      <a href="/listing/<%=listing._id%>" class="listing-links">
+<div class="card col listing-card" >
+         <img src="<%=listing.image%>" class="card-img-top" style="height:20rem;" alt="...">
+
+         <div class="card-img-overlay"></div>
+       <div class="card-body">
+         <p class="card-text">
+       <b> <%=listing.title%> </b><br> 
+           &#8377; <%=listing.price.toLocaleString("en-IN")%> / night
+        </p>
+       </div>
+     </div>
+      </a>
+     <% }%>
+    
+  </div>
+  
+
+    </div>
+
+
+
+ <%-include("./partials/scripts")%>
+</body>
+</html>

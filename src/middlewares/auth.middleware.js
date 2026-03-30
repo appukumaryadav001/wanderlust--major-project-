@@ -15,7 +15,7 @@ const isLoggedIn = wrapAsync( async (req,res, next)=>{
         return res.redirect("/user/login");
     }
 
-    res.locals.currentUser = user;
+    res.locals.currtUser = user;
     req.user = user;
     next();
 });
