@@ -12,6 +12,8 @@ import {ApiError} from "./utils/ApiError.js";
 import userRouter from "./routes/user.route.js";
 import listingRouter from "./routes/listing.route.js";
 import reviewRouter from "./routes/review.route.js";
+import {User} from "./models/user.model.js";
+import { wrapAsync } from "./utils/wrapAsync.js";
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -43,12 +45,23 @@ app.use((req,res,next)=>{
     };
    next();
 });
+app.use(wrapAsync(async (req, res, next) => {
+    if (req.session.userId) {
+        const user = await User.findById(req.session.userId);
+        res.locals.currUser = user || null;
+        req.user = user || null;
+    } else {
+        res.locals.currUser = null;
+        req.user = null;
+    }
+    next();
+}));
 app.use(methodOverride('_method'));
 
 
 
 app.get("/",(req,res)=>{
-    return res.redirect("/listing");
+     return res.redirect("/listing");
 });
 
 app.use("/user",userRouter);

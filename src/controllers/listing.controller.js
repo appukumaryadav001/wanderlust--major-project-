@@ -8,16 +8,16 @@ import {Listing} from "../models/listing.model.js";
 
 const getAllListings = wrapAsync (async (req,res)=>{
     const allListings = await Listing.find({});
-    return res.render("home.ejs",{allListings});
+    return res.render("listings/index.ejs",{allListings});
 });
 
 const renderNewListingForm = (req,res)=>{
-    return res.render("new.ejs");
+    return res.render("listings/new.ejs");
 };
 
 const createListing = wrapAsync (async (req,res)=>{
 
-    const {title,description ,location,country} = req.body;
+    const {title,description ,price,location,country} = req.body;
 
     if([title,description,price,location,country].some((field)=>{
         return field.trim() ==="";
@@ -79,7 +79,7 @@ const showListing = wrapAsync (async (req,res)=>{
          req.flash("error","Listing you requested for does not exist!");
       return  res.redirect("/listing")
     }else{
-        return res.render("show.ejs",{listing});
+        return res.render("listings/show.ejs",{listing});
     }
 
 
@@ -98,7 +98,7 @@ const renderUpdateListingForm = wrapAsync (async (req,res)=>{
         req.flash("error","Listing you reqursted for does not exist!");
         return res.redirect("/listing")
     }else{
-        return res.render("update.ejs",{listing})
+        return res.render("listings/edit.ejs",{listing})
     }
 });
 
@@ -146,7 +146,7 @@ const updateListing = wrapAsync (async (req,res)=>{
     imageUrl = uploadedImage?.url;
   }
 
-  const updatedingListing = await Listing.findByIdAndUpdate(listingId,{
+  const updatedListing = await Listing.findByIdAndUpdate(listingId,{
     title,
     description,
     price,
@@ -159,7 +159,7 @@ const updateListing = wrapAsync (async (req,res)=>{
 
 
   req.flash("success","Listing updated successfully!");
-  return res.redirect(`/listing/${updatedingListing.id}`);
+  return res.redirect(`/listing/${updatedListing._id}`);
 });
 
 const deleteListing = wrapAsync (async (req,res)=>{
