@@ -22,7 +22,8 @@ const __dirname = path.dirname(__filename);
 app.engine('ejs',ejsMate);
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname, "../views"));
-app.use(express.static(path.resolve('../public')));
+// app.use(express.static(path.resolve('../public')));
+app.use(express.static(path.join(__dirname, "../../public")));
 app.use(session({
     secret:process.env.SESSION_SECRET,
     resave:false,

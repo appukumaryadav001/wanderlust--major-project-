@@ -46,7 +46,7 @@ const signup = wrapAsync (async (req,res)=>{
     
     req.session.userId = user._id;
     req.flash("success","Welcome " + user.username + "!")
-    return res.redirect("/listings");
+    return res.redirect("/listing");
 });
 
 const getLogin = (req,res)=>{
