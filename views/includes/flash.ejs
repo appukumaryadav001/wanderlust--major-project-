@@ -1,14 +1,14 @@
 
-<% if(success && success.length) { %>
+<% if(messages.success && messages.success.length) { %>
 <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-    <%=success%>
+    <%=messages.success%>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 </div>
 <%}%>
 
-<% if(error && error.length) { %>
+<% if(messages.error && messages.error.length) { %>
 <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-    <%=error%>
+    <%=messages.error%>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 </div>
 <%}%>

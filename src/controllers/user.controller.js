@@ -3,7 +3,7 @@ import {wrapAsync} from "../utils/wrapAsync.js";
 import {User} from "../models/user.model.js";
 import {uploadOncloudinary} from "../utils/cloudinary.js";
 const getSignup = (req,res)=>{
-   return  res.render("signup.ejs");
+   return  res.render("users/signup.ejs");
 };
 
 const signup = wrapAsync (async (req,res)=>{
@@ -46,11 +46,11 @@ const signup = wrapAsync (async (req,res)=>{
     
     req.session.userId = user._id;
     req.flash("success","Welcome " + user.username + "!")
-    return res.redirect("/");
+    return res.redirect("/listings");
 });
 
 const getLogin = (req,res)=>{
-   return res.render("login.ejs")
+   return res.render("users/login.ejs")
 };
 
 const login = wrapAsync( async (req,res)=>{
@@ -76,18 +76,18 @@ const login = wrapAsync( async (req,res)=>{
     }
     req.session.userId = user._id;
      req.flash("success", "Welcome back " + user.username + "!");
-    return res.redirect("/");
+    return res.redirect("/listing");
 });
 
 const logout = (req,res)=>{
     req.session.destroy((err)=>{
         if(err){
             req.flash("error", "Logout failed");
-            return res.redirect("/");
+            return res.redirect("/listing");
         }
 
         res.clearCookie("connect.sid");
-        return res.redirect("/");
+        return res.redirect("/listing");
     });
 };
 

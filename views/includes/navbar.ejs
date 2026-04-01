@@ -15,13 +15,13 @@
          
         <% if (!currUser){%>
         
-            <a class="nav-link " href="/signup">Sign Up</a>
-        <a class="nav-link" href="/login">Login</a>
+            <a class="nav-link " href="/user/signup">Sign Up</a>
+        <a class="nav-link" href="/user/login">Login</a>
       <%}%>
         
       <% if (currUser){%>
        
-        <a class="nav-link" href="/logout">Log out</a>
+        <a class="nav-link" href="/user/logout">Log out</a>
         <%}%>
       </div>
     </div>
