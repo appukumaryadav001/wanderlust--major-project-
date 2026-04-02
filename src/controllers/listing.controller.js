@@ -61,7 +61,7 @@ const listing = await Listing.create({
     price,
     location,
     country,
-    image:imageUrl || "/image/unsplash-default-1.jpg",
+    image:imageUrl || "/images/unsplash-default-1.jpg",
     owner:req.user._id,
 });
 
