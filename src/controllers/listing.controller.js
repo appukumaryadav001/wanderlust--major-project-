@@ -7,8 +7,20 @@ import {Listing} from "../models/listing.model.js";
 
 
 const getAllListings = wrapAsync (async (req,res)=>{
-    const allListings = await Listing.find({});
-    return res.render("listings/index.ejs",{allListings});
+
+    const page = parseInt(req.query.page) || 1;
+    const limit = 9 ;
+    const skip = (page-1)*limit;
+
+    const totalListings = await Listing.countDocuments();
+    const totalPages = Math.ceil(totalListings/limit);
+    const allListings = await Listing.find({}).skip(skip).limit(limit);
+    return res.render("listings/index.ejs",{
+        allListings,
+        currentPage:page,
+        totalPages,
+        totalListings
+    });
 });
 
 const renderNewListingForm = (req,res)=>{

@@ -24,6 +24,23 @@
      <% }%>
   </div>
  
+  <%if(totalPages>1){ %>
+     <div class="d-flex justify-content-center mt-4">
+      <% if(currentPage > 1) { %>
+      <a href="/listing?page=<%= currentPage - 1 %>" class="btn btn-outline-dark me-2">
+        &larr; Previous
+      </a>
+    <% } %>
+     <span class="btn btn-dark disabled">
+      Page <%= currentPage %> of <%= totalPages %>
+    </span>
+    <% if(currentPage < totalPages) { %>
+      <a href="/listing?page=<%= currentPage + 1 %>" class="btn btn-outline-dark ms-2">
+        Next &rarr;
+      </a>
+    <% } %>
+     </div>
+  <%}%>
 
 </body>
 </html>

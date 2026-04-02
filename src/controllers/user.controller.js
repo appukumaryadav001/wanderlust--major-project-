@@ -46,7 +46,10 @@ const signup = wrapAsync (async (req,res)=>{
     
     req.session.userId = user._id;
     req.flash("success","Welcome " + user.username + "!")
-    return res.redirect("/listing");
+    req.session.save((err) => {
+        if (err) return res.redirect("/user/signup");
+        return res.redirect("/listing");
+    });
 });
 
 const getLogin = (req,res)=>{
@@ -76,7 +79,10 @@ const login = wrapAsync( async (req,res)=>{
     }
     req.session.userId = user._id;
      req.flash("success", "Welcome back " + user.username + "!");
-    return res.redirect("/listing");
+     req.session.save((err) => {
+        if (err) return res.redirect("/user/login");
+        return res.redirect("/listing");
+    });
 });
 
 const logout = (req,res)=>{
